@@ -57,6 +57,14 @@
       // Start the player
       var client = new WebSocket(wsUrl);
       var player = new jsmpeg(client, { canvas:canvas });
+
+      // The video is 4:3 and the screen is probably more like 16:9 so we're going to rescale
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+
+      if (w*3 > h*4) {
+        canvas.style.width = (100*(h*4/(3*w)))+"%";
+      }
     </script>
   </body>
 </html>
