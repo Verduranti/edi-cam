@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,8 +31,19 @@
 
   <script src="/jsmpg.js"></script>
   <script type="text/javascript">
+    // Load info about the current web page
+    function toDomain(url)
+    {
+        return url !== null ? url.replace(/^(https?:\/\/)?([^\/:]+).*$/, "$2") : "";
+    }
+
+    url = window.location.href; // https://callbutton.heroku.com/web/help.html
+    domainUrl = toDomain(url);  // callbutton.heroku.com
+
     // CHANGE THIS TO THE APPROPRIATE WS ADDRESS
-    var wsUrl = 'ws://myedison.local:8084/';
+    //var wsUrl = 'ws://sapphire.local:8084/';
+    //var wsUrl = 'ws://192.168.42.1:8084/';
+    var wsUrl = 'ws://'+domainUrl+':8084/';
 
     // Show loading notice
     var canvas = document.getElementById('canvas-video');
